@@ -42,5 +42,14 @@ class HandleEventsDaemonCommand extends Command
             sleep(10);
         }
     }
-
+    public function getCurrentTime(): array
+    {
+        return [
+            date("i"),
+            date("H"),
+            date("d"),
+            date("m"),
+            date("w")
+        ];
+    }
 }
