@@ -10,10 +10,14 @@ class HandleEventsDaemonCommandTest extends TestCase
             $handleEventsDaemonCommandTest = new \App\Commands\HandleEventsDaemonCommand(new \App\Application(dirname(__DIR__)));
     
             self::assertEquals(
-                $handleEventsDaemonCommandTest->getCurrentTime(),
                 [
-
-                ]
+                    date("i"),
+                    date("H"),
+                    date("d"),
+                    date("m"),
+                    date("w")
+                ],
+                $handleEventsDaemonCommandTest->getCurrentTime(),
             );
         }
 }
