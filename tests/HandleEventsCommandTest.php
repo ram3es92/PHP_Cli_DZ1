@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use function PHPUnit\Framework\assertStringNotEqualsFileIgnoringCase;
 
 class HandleEventsCommandTest extends TestCase
 {
@@ -24,12 +25,31 @@ class HandleEventsCommandTest extends TestCase
                     'minute' => date("i"),
                     'hour' => date("H"),
                     'day' => date("d"),
-                    'mount' => date("m"),
+                    'month' => date("m"),
                     'day_of_week' => date("w")
                 ],
                 true
-            ]
-            
+            ],
+            [
+                [
+                    'minute' => date("i"),
+                    'hour' => date("H"),
+                    'day' => date("d"),
+                    'month' => date("m"),
+                    'day_of_week' => null
+                ],
+                false
+            ],
+            [
+                [
+                    'minute' => date("i"),
+                    'hour' => date("H"),
+                    'day' => date("d"),
+                    'month' => null,
+                    'day_of_week' => date("w")
+                ],
+                false
+            ],
         ];
     }
 }
