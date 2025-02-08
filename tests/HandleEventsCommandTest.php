@@ -1,16 +1,17 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class HandleEventsCommandTest extends TestCase
 {
-    #[DataProvider('eventDtoDataProvider')]
-    public function testShouldEventBeRanReceiveEventDtoAndReturnCorrectBool(EvenDto $dto, bool $shouldEventBeRan): void
+    /**
+    * @dataProvider eventDtoDataProvider
+    */
+    public function testShouldEventBeRanReceiveEventDtoAndReturnCorrectBool(array $event, bool $shouldEventBeRan): void
     {
-        $handleEventsCommand = new \App\Command\HandleEventsCommand(new \App\Application(dirname(__DIR__)));
+        $handleEventsCommand = new \App\Commands\HandleEventsCommand(new \App\Application(dirname(__DIR__)));
 
-        $result = $handleEventsCommand->shouldEventBeRan($dto);
+        $result = $handleEventsCommand->shouldEventBeRan($event);
 
         self::assertEquals($result, $shouldEventBeRan);
     }
@@ -18,7 +19,17 @@ class HandleEventsCommandTest extends TestCase
     public static function eventDtoDataProvider(): array
     {
         return [
-
+            [
+                [
+                    'minute' => date("i"),
+                    'hour' => date("H"),
+                    'day' => date("d"),
+                    'mount' => date("m"),
+                    'day_of_week' => date("w")
+                ],
+                true
+            ]
+            
         ];
     }
 }
