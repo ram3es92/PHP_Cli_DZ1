@@ -42,6 +42,37 @@ class SaveEventCommandTest extends TestCase
                 ],
                 true
             ],
+            [
+                [
+                    'name' => "some-name",
+                    'text' => "some-text",
+                    'receiver' => "some-receiver",
+                    'cron' => "some-cron",
+                    'help'=> null,
+                    'h' => "some-h"
+                ],
+                true
+            ],
+            [
+                [
+                    'name' => "some-name",
+                    'text' => "some-text",
+                    'receiver' => "some-receiver",
+                    'cron' => null,
+                ],
+                true
+            ],
+            [
+                [
+                    'name' => "some-name",
+                    'text' => "some-text",
+                    'receiver' => null,
+                    'cron' => "some-cron",
+                   // 'help',
+                   // 'h'
+                ],
+                true
+            ],
             ];
     }
 }
