@@ -1,7 +1,10 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use function PHPUnit\Framework\assertStringNotEqualsFileIgnoringCase;
+
+/**
+ * @covers HandleEventsCommand
+ */
 
 class HandleEventsCommandTest extends TestCase
 {

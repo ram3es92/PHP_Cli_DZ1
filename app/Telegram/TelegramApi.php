@@ -2,14 +2,13 @@
 
 namespace App\Telegram;
 
-interface TelegramApi
-{
+interface TelegramApi {
+    public function __construct(string $token);
+
     /**
-     * @param int $offset
      * @return TelegramMessageDto[]
      */
-    public function getMessage(int $offset): array;
+    public function getMessages(int $offset): array;
 
-    public function sendMessage(int $chatId, string $text);
-
+    public function sendMessage(string $chatId, string $text);
 }
