@@ -40,7 +40,7 @@ class HandleEventsCommand extends Command
 
         foreach ($events as $event) {
 
-            if ($this->shouldEventBeRan($event)) {
+            if (true) {
 
                 $eventSender->sendMessage($event['receiver_id'], $event['text']);
 
