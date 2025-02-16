@@ -24,6 +24,7 @@ class EventSender implements Queueable
     
     public function handle(): void
     {
+        var_dump(4444, $this->receiver, $this->message);
         $this->telegram->sendMessage($this->receiver, $this->message);
     }
     
