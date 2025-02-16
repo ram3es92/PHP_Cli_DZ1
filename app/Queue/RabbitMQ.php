@@ -42,7 +42,9 @@ class RabbitMQ implements Queue
     
     public function ackLastMessage(): void
     {
-        $this->lastMessage?->ack();
+        if ($this->lastMessage && isset($this->lastMessage->delivery_info['delivery_tag'])) {
+            $this->channel->basic_ack($this->lastMessage->delivery_info['delivery_tag']);
+        }
         $this->close();
     }
     
